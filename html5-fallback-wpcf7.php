@@ -1,12 +1,15 @@
 <?php
-/*
-Plugin Name: Activate HTML5 Fallback for Contact Form 7
-Plugin URI: https://torstenlandsiedel.de
-Description: If you use the date or number input fields and wish to use a jQuery UI-based fallback feature.
-Version: 1.1
-Author: Torsten Landsiedel
-Author URI: https://torstenlandsiedel.de
-*/
+/**
+ * Plugin Name: Activate HTML5 Fallback for Contact Form 7
+ * Description: If you use the date or number input fields and wish to use a localized jQuery UI-based fallback feature in Contact Form 7.
+ * Version: 1.1.0
+ * Author: Torstenlandsiedel
+ * Author URI: http://torstenlandsiedel.de
+ * Plugin URI: https://github.com/Zodiac1978/html5-fallback-wpcf7
+ * Text Domain: threaded-comment-feed-enhancer
+ * License: GPLv2
+ * License URI: http://www.gnu.org/licenses/gpl-2.0
+ */
 
 
 /*
@@ -29,12 +32,6 @@ See: http://contactform7.com/faq/does-contact-form-7-support-html5-input-types/
 
 add_filter( 'wpcf7_support_html5_fallback', '__return_true' );
 
-/* Grab filter from WPCF7? IDEA
-
-function wpcf7_load_js_for_l18n() {
-	return apply_filters( 'wpcf7_load_js', WPCF7_LOAD_JS );
-}
-*/
 
 /*
 Add l18n for datepicker

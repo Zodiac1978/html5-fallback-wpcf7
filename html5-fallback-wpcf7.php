@@ -6,7 +6,7 @@
  * Author: Torstenlandsiedel
  * Author URI: http://torstenlandsiedel.de
  * Plugin URI: https://github.com/Zodiac1978/html5-fallback-wpcf7
- * Text Domain: threaded-comment-feed-enhancer
+ * Text Domain: html5-fallback-wpcf7
  * License: GPLv2
  * License URI: http://www.gnu.org/licenses/gpl-2.0
  */

@@ -63,7 +63,6 @@ function getJqueryUII18nLocale() {
 		case 'fr-CA':
 		case 'fr-CH':
 		case 'nl-BE':
-		case 'nl-BE':
 		case 'pt-BR':
 		case 'sr-SR':
 		case 'zh-CN':

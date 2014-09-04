@@ -17,12 +17,18 @@
  */
 
 add_filter( 'wpcf7_load_js', '__return_false' );
+add_filter( 'wpcf7_load_css', '__return_false' );
 
 add_action( 'wp_enqueue_scripts', 'reregister_cf7_javascript' );
 function reregister_cf7_javascript() {
-	if ( function_exists( 'wpcf7_enqueue_scripts' ) && is_page( '178' ) ) {
-    		wpcf7_enqueue_scripts();
-	}
+	if ( is_page( array( 1395, 1035 ) ) ) {
+		if ( function_exists( 'wpcf7_enqueue_scripts' ) ) {
+			wpcf7_enqueue_scripts();
+		}
+		if ( function_exists( 'wpcf7_enqueue_styles' ) ) {
+        		wpcf7_enqueue_styles();
+    		}
+    	}
 }
 
 /*
@@ -63,12 +69,12 @@ function getJqueryUII18nLocale() {
 		case 'zh-CN':
 		case 'zh-HK':
 		case 'zh-TW':
-			//For all this locale do nothing the file already exist
+			// For all this locale do nothing the file already exist
 			break;
 		default:
-			//for other locale keep the first part of the locale (ex: "fr-FR" -> "fr")
+			// for other locale keep the first part of the locale (ex: "fr-FR" -> "fr")
 			$locale = substr( $locale, 0, strpos( $locale, '-' ) );
-			//English is the default locale
+			// English is the default locale = empty string
 			$locale = ( $locale == 'en' ) ? '' : $locale;
 			break;
 	}
@@ -76,16 +82,16 @@ function getJqueryUII18nLocale() {
 }
 
 function add_l18n_datepicker_script() {
-	/* Just add l18n script if cf7 is really loaded on this page/post */
+	// Just add l18n script if cf7 is really loaded on this page/post
 	if ( ! wp_script_is( 'contact-form-7' ) ) { return; }
 
 	// Get the WP built-in version from jQuery UI
 	$wp_jquery_ui_ver = $GLOBALS['wp_scripts']->registered['jquery-ui-core']->ver;
 
 	$locale = getJqueryUII18nLocale();
-	if ( $locale ) {
+	if ( ''  != $locale ) { // Just add l18n if language is not EN (empty string)
 		/* CDN */
-		//wp_enqueue_script( 'jquery-ui-i18n-'.$locale, 'http://jquery-ui.googlecode.com/svn/tags/latest/ui/i18n/jquery.ui.datepicker-'.$locale.'.js', array( 'jquery-ui-datepicker' ), $wp_jquery_ui_ver, true );
+		// wp_enqueue_script( 'jquery-ui-i18n-' . $locale, 'http://jquery-ui.googlecode.com/svn/tags/latest/ui/i18n/jquery.ui.datepicker-' . $locale . '.js', array( 'jquery-ui-datepicker' ), $wp_jquery_ui_ver, true );
 		/* local */
 		wp_enqueue_script( 'jquery-ui-i18n-' . $locale, plugins_url( '/i18n/jquery.ui.datepicker-' . $locale . '.js' , __FILE__ ) , array( 'jquery-ui-datepicker' ), $wp_jquery_ui_ver, true );
 	}
